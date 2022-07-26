@@ -6,6 +6,7 @@ admin.site.register(Transaction)
 admin.site.register(Subscription)
 admin.site.register(Plan)
 admin.site.register(Feature)
+admin.site.register(Usage)
 
 
 @admin.register(BuyerProfile)

@@ -1,6 +1,7 @@
 from django.urls import path, re_path
 from .views.feature_views import *
 from .views.plan_views import *
+from .views.user_views import *
 
 urlpatterns = [
     # Plan URLS
@@ -15,4 +16,6 @@ urlpatterns = [
     path('features/<int:pk>', DetailFeature.as_view(), name='get-plan'),
     path('features/update/<int:pk>', UpdateFeature.as_view(), name='update-plan'),
     path('features/delete/<int:pk>', DeleteFeature.as_view(), name='delete-plan'),
+    # User Views
+    path('buyers', ListBuyers.as_view(), name='list-buyers')
 ]

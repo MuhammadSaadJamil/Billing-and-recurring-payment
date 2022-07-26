@@ -29,3 +29,6 @@ class UserManager(BaseUserManager):
         user.user_type = user.user_type_choices[0][0]
         user.save(using=self._db)
         return user
+
+    def get_buyers(self):
+        return self.get_queryset().filter(user_type='B')

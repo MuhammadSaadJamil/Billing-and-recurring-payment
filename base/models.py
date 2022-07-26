@@ -36,8 +36,8 @@ class BuyerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_profile')
     billing_day = models.DateField(auto_now_add=True)  # change here
     payment_authorized = models.BooleanField(default=False)
-    subscriptions = models.ManyToManyField('Subscription', related_name='buyer')
-    transactions = models.ManyToManyField('Transaction', related_name='buyer')
+    subscriptions = models.ManyToManyField('Subscription', related_name='buyer', blank=True)
+    transactions = models.ManyToManyField('Transaction', related_name='buyer', blank=True)
 
     def __str__(self):
         return f"{self.user.get_full_name() if self.user.get_full_name() else self.user.email}'s profile"
@@ -54,6 +54,9 @@ class Transaction(models.Model):
 
 class Subscription(models.Model):
     plan = models.ForeignKey('Plan', on_delete=models.SET_NULL, related_name='subscription', null=True, blank=False)
+
+    def __str__(self):
+        return str(self.plan)
 
 
 class Plan(models.Model):
@@ -73,3 +76,13 @@ class Feature(models.Model):
 
     def __str__(self):
         return f"{self.code} - {self.name}"
+
+
+class Usage(models.Model):
+    buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='usage')
+    subscription = models.ForeignKey(Subscription, on_delete=models.CASCADE, related_name='usage')
+    feature = models.ForeignKey(Feature, on_delete=models.SET_NULL, null=True, related_name='usage')
+    unit_used = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'[{self.subscription.plan.name}] -- [{self.feature.name}] usage by {self.buyer}'
