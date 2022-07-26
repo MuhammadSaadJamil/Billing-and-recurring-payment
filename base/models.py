@@ -27,9 +27,15 @@ class User(AbstractUser):
     @property
     def profile(self):
         try:
-            return self.buyer_profile
-        except:
+            return self.buyer_profile.get()
+        except BuyerProfile.DoesNotExist:
             return None
+
+    @property
+    def subscriptions(self):
+        if self.is_admin:
+            return None
+        return self.profile.subscriptions
 
 
 class BuyerProfile(models.Model):

@@ -54,7 +54,7 @@ def activate(request, uidb64, token):
         user = User.objects.get(id=uid)
         if user.is_active:
             return HttpResponse('Account already activated!')
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist, User.MultipleObjectsReturned):
         user = None
     if user and account_activation_token.check_token(user, token):
         user.is_active = True
@@ -75,7 +75,7 @@ def update_profile(request, uidb64):
     try:
         user_id = decode_base64(uidb64)
         user = User.objects.get(id=user_id)
-    except:
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist, User.MultipleObjectsReturned):
         user = None
     if not user:
         return render(request, '404_err.html', {'data': 'User'})
