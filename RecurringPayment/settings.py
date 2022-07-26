@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'base',
     'accounts',
     'Admin',
-    'usage'
+    'usage',
+    'buyer'
 ]
 
 MIDDLEWARE = [
