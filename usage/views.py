@@ -7,7 +7,7 @@ from usage.utils import get_user_by_pk
 def get_subscriptions(request, pk):
     user = get_user_by_pk(pk)
     if not user or user.is_admin:
-        return render(request, '404_err.html', {'data': 'Buyer'})
+        return render(request, 'error/404_err.html', {'data': 'Buyer'})
 
     context = {
         'subscriptions': user.profile.get().subscriptions.all(),
@@ -20,7 +20,7 @@ def get_subscriptions(request, pk):
 def get_feature_usage(request, pk):
     user = get_user_by_pk(pk)
     if not user or user.is_admin:
-        return render(request, '404_err.html', {'data': 'Buyer'})
+        return render(request, 'error/404_err.html', {'data': 'Buyer'})
     context = {
         'usage': user.usage.all()
     }

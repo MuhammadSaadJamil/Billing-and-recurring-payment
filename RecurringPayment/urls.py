@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from base.views import *
+
 urlpatterns = [
     path('admin-panel/', admin.site.urls),
+    path('', index, name='home'),
+    path('unauthorized/', unauthorized, name='err-401'),
     path('accounts/', include("accounts.urls")),
     path('admin/', include("Admin.urls")),
 ]

@@ -37,6 +37,10 @@ class User(AbstractUser):
             return None
         return self.profile.subscriptions
 
+    @property
+    def is_complete(self):
+        return self.first_name is not None
+
 
 class BuyerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_profile')
