@@ -21,6 +21,7 @@ from base.views import *
 urlpatterns = [
     path('admin-panel/', admin.site.urls),
     path('', index, name='home'),
+    path('user/profile', get_profile, name='profile'),
     path('unauthorized/', unauthorized, name='err-401'),
     path('accounts/', include("accounts.urls")),
     path('admin/', include("Admin.urls")),

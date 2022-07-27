@@ -1,0 +1,22 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Monthly Fee</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for plan in plans %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'get-plan' plan.id %}" class="table-link">{{ plan.name }}</a></td>
+                <td>{{ plan.monthly_fee }}</td>
+                <td><a href="{% url 'update-plan' plan.id %}" class="btn btn-secondary">Edit</a></td>
+                <td><a href="{% url 'delete-plan' plan.id %}" class="btn btn-danger">Delete</a></td>
+            </tr>
+
+        {% endfor %}
+    </table>
+{% endblock %}

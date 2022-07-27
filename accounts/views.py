@@ -42,7 +42,13 @@ def signup(request):
             return render(request, 'accounts/confirm_email.html')
     else:
         form = SignupForm()
-    return render(request, 'signup.html', {'form': form})
+    context = {
+        'form': form,
+        'title': 'Add User',
+        'heading': 'Add User',
+        'signup': 'active'
+    }
+    return render(request, 'Admin/signup.html', context)
 
 
 def activate(request, uidb64, token):
@@ -90,10 +96,15 @@ def update_profile(request, uidb64):
             form.save()
             return redirect(reverse('home'))
     form = AccountSetupForm(instance=user)
-    data = {
-        'form': form
-    }
-    return render(request, 'signup.html', data)
+    if user.is_admin:
+        data = {
+            'form': form,
+            'title': 'Update Profile',
+            'heading': 'Update Profile',
+            'profile': 'active',
+            'button_text': 'Update Profile'
+        }
+        return render(request, 'Admin/add-form.html', data)
 
 
 class Login(LoginView):

@@ -1,0 +1,71 @@
+{% load static %}
+<header>
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <div class="position-sticky">
+            <div class="list-group list-group-flush mx-3 mt-5">
+                <a href="{% url 'home' %}"
+                   class="list-group-item list-group-item-action py-2 {{ home }}"
+                   aria-current="true">
+                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                    <span>Home</span>
+                </a>
+
+                <a href="{% url 'signup' %}" class="list-group-item list-group-item-action py-2 {{ signup }}"
+                   aria-current="true">
+                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                    <span>Add User</span>
+                </a>
+
+                <a href="{% url 'list-plan' %}" class="list-group-item list-group-item-action py-2 {{ plans_active }}"
+                   aria-current="true">
+                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                    <span>Plans</span>
+                </a>
+
+                <a href="{% url 'list-feature' %}"
+                   class="list-group-item list-group-item-action py-2 {{ features_active }}"
+                   aria-current="true">
+                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                    <span>Features</span>
+                </a>
+
+
+                <a href="{% url 'profile' %}"
+                   class="list-group-item list-group-item-action py-2 {{ profile }}"
+                   aria-current="true">
+                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                    <span>Profile</span>
+                </a>
+
+                <a href="{% url 'logout' %}"
+                   class="list-group-item list-group-item-action py-2"
+                   aria-current="true">
+                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                    <span>Logout</span>
+                </a>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top border">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img class="logo" src="{% static 'images/logo/logo-2.png' %}" alt="Logo"/>
+            </a>
+
+
+        </div>
+    </nav>
+
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px;">
+    <div class="container pt-4">
+        adkb
+    </div>
+</main>
+<!--Main layout-->
