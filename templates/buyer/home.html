@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Buyer Home</h1>
-</body>
-</html>
+{% extends 'base/main.html' %}
+{% load util_tags %}
+{% block content %}
+    <div class="row">
+        {% for plan in plans %}
+            <div class="col-md-4 col-sm-12">
+                <div class="info-box-col mt-2 mb-2">
+                    <div class="info-header">
+                        <h3>{{ plan.name }}</h3>
+                    </div>
+                    <div class="info-body">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>Monthly Fee</th>
+                                <td>{{ plan.monthly_fee }}</td>
+                            </tr>
+                            <tr>
+                                <th>Features</th>
+                                <td>
+                                    <ul>
+                                        {% for item in plan.features.all %}
+                                            <li><a href="{% url 'feature-details' item.id %}">{{ item.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="info-box-footer">
+                        <div class="center-items pb-4">
+                            {% with subscribed=plan|subscribed:request.user %}
+                                {% if not subscribed %}
+                                    <a href="{% url 'subscribe' plan.id %}" class="btn btn-primary">Subscribe</a>
+                                {% else %}
+                                    <button disabled class="btn btn-secondary">Subscribe</button>
+                                {% endif %}
+                            {% endwith %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

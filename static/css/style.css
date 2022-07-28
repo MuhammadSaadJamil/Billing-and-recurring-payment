@@ -20,25 +20,26 @@ body {
     z-index: 600;
 }
 
-.navbar-brand .logo{
+.navbar-brand .logo {
     height: 4rem;
     width: auto;
 }
 
-.form-container{
+.form-container {
     width: 80%;
 }
-.center-items{
+
+.center-items {
     display: flex;
     justify-content: center;
     align-content: center;
 }
 
-table .table-link:hover{
+table .table-link:hover {
     text-decoration: none;
 }
 
-.confirm-box{
+.confirm-box {
     margin: 5rem;
     border: 1px solid dodgerblue;
     padding: 3rem;
@@ -46,21 +47,21 @@ table .table-link:hover{
     background: white;
 }
 
-.info-box{
+.info-box {
     background: white;
     border: 1px solid dodgerblue;
     border-radius: 2rem;
     width: 50%;
 }
 
-.info-box-col{
+.info-box-col {
     background: white;
     border: 1px solid dodgerblue;
     border-radius: 2rem;
     /*width: 100%;*/
 }
 
-.info-header{
+.info-header {
     border-radius: 1.9rem 1.9rem 0 0;
     background: #4485c7;
     padding: 1rem;
@@ -68,7 +69,22 @@ table .table-link:hover{
 
 }
 
-.profile-img{
+.profile-img {
     height: auto;
-    width: 100%;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.info-box-footer {
+
+}
+
+.icon-img {
+    height: 20px;
+    width: auto;
+}
+
+table {
+    overflow-x: scroll;
 }

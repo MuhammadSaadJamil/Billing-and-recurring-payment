@@ -96,7 +96,7 @@ def update_profile(request, uidb64):
             form.save()
             return redirect(reverse('home'))
     form = AccountSetupForm(instance=user)
-    if user.is_admin:
+    if user:
         data = {
             'form': form,
             'title': 'Update Profile',

@@ -10,25 +10,45 @@
                     <span>Home</span>
                 </a>
 
-                <a href="{% url 'signup' %}" class="list-group-item list-group-item-action py-2 {{ signup }}"
-                   aria-current="true">
-                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
-                    <span>Add User</span>
-                </a>
+                {% if request.user.is_superuser %}
 
-                <a href="{% url 'list-plan' %}" class="list-group-item list-group-item-action py-2 {{ plans_active }}"
-                   aria-current="true">
-                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
-                    <span>Plans</span>
-                </a>
+                    <a href="{% url 'signup' %}" class="list-group-item list-group-item-action py-2 {{ signup }}"
+                       aria-current="true">
+                        {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                        <span>Add User</span>
+                    </a>
 
-                <a href="{% url 'list-feature' %}"
-                   class="list-group-item list-group-item-action py-2 {{ features_active }}"
-                   aria-current="true">
-                    {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
-                    <span>Features</span>
-                </a>
+                    <a href="{% url 'list-plan' %}"
+                       class="list-group-item list-group-item-action py-2 {{ plans_active }}"
+                       aria-current="true">
+                        {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                        <span>Plans</span>
+                    </a>
 
+                    <a href="{% url 'list-feature' %}"
+                       class="list-group-item list-group-item-action py-2 {{ features_active }}"
+                       aria-current="true">
+                        {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                        <span>Features</span>
+                    </a>
+
+                    <a href="{% url 'list-buyers' %}"
+                       class="list-group-item list-group-item-action py-2 {{ usage_active }}"
+                       aria-current="true">
+                        {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                        <span>Usage</span>
+                    </a>
+
+                {% else %}
+
+                    <a href="{% url 'list-usage' request.user.id %}"
+                       class="list-group-item list-group-item-action py-2 {{ usage_active }}"
+                       aria-current="true">
+                        {#                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>#}
+                        <span>Usage</span>
+                    </a>
+
+                {% endif %}
 
                 <a href="{% url 'profile' %}"
                    class="list-group-item list-group-item-action py-2 {{ profile }}"
@@ -64,8 +84,7 @@
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
-    <div class="container pt-4">
-        adkb
+    <div class="container pt-5">
     </div>
 </main>
 <!--Main layout-->

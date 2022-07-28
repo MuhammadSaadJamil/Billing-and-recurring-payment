@@ -44,6 +44,8 @@ class DetailPlan(DetailView):
         context['title'] = 'Plan Details'
         context['heading'] = 'Plan Details'
         context['plans_active'] = 'active'
+        context['button'] = 'Edit'
+        context['link'] = reverse('update-plan', args=[self.object.id])
         return context
 
 

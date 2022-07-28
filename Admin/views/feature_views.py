@@ -43,6 +43,8 @@ class DetailFeature(DetailView):
         context['title'] = 'Feature Details'
         context['heading'] = 'Feature Details'
         context['features_active'] = 'active'
+        context['button'] = 'Edit'
+        context['link'] = reverse('update-feature', args=[self.object.id])
         return context
 
 

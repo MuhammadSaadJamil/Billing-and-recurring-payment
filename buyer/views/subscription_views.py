@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from base.models import *
 from usage.utils import get_user_by_pk, get_object_by_id
@@ -11,17 +12,18 @@ def subscribe(request, pk):
     :param pk:
     :return:
     """
-    user: User = get_user_by_pk(request.user.id)
+    user = get_user_by_pk(request.user.id)
     if user.is_admin:
         return render(request, 'error/401_err.html')
     plan = get_object_by_id(Plan, pk)
     if not plan:
         return render(request, 'error/404_err.html', {'data': 'plan'})
     profile = user.profile
-    profile.subscriptions.add(plan)
+    subscription = Subscription.objects.create(plan=plan)
+    profile.subscriptions.add(subscription)
     profile.save()
 
-    return render(request, '')
+    return redirect(reverse('home'))
 
 
 def unsubscribe(request, pk):
@@ -34,11 +36,12 @@ def unsubscribe(request, pk):
     user: User = get_user_by_pk(request.user.id)
     if user.is_admin:
         return render(request, 'error/401_err.html')
-    plan = get_object_by_id(Plan, pk)
-    if not plan:
-        return render(request, 'error/404_err.html', {'data': 'plan'})
+    subscription = get_object_by_id(Subscription, pk)
+    if not subscription:
+        return render(request, 'error/404_err.html', {'data': 'Subscription'})
     profile = user.profile
-    profile.subscriptions.remove(plan)
+    profile.subscriptions.remove(subscription)
     profile.save()
+    subscription.delete()
 
     return render(request, '')

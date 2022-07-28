@@ -25,4 +25,6 @@ urlpatterns = [
     path('unauthorized/', unauthorized, name='err-401'),
     path('accounts/', include("accounts.urls")),
     path('admin/', include("Admin.urls")),
+    path('user/', include("buyer.urls")),
+    path('usage/', include("usage.urls")),
 ]

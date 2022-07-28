@@ -45,7 +45,7 @@ class User(AbstractUser):
 class BuyerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_profile')
     billing_day = models.DateField(auto_now_add=True)  # change here
-    payment_authorized = models.BooleanField(default=False)
+    stripe_token = models.CharField(max_length=500, null=True, blank=True)
     subscriptions = models.ManyToManyField('Subscription', related_name='buyer', blank=True)
     transactions = models.ManyToManyField('Transaction', related_name='buyer', blank=True)
 
@@ -55,6 +55,10 @@ class BuyerProfile(models.Model):
     @property
     def label(self):
         return str(self)
+
+    @property
+    def payment_authorized(self):
+        return self.stripe_token is not None
 
 
 class Transaction(models.Model):
@@ -92,7 +96,11 @@ class Usage(models.Model):
     buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='usage')
     subscription = models.ForeignKey(Subscription, on_delete=models.CASCADE, related_name='usage')
     feature = models.ForeignKey(Feature, on_delete=models.SET_NULL, null=True, related_name='usage')
-    unit_used = models.IntegerField(default=0)
+    unit_used = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f'[{self.subscription.plan.name}] -- [{self.feature.name}] usage by {self.buyer}'
+
+    @property
+    def subscription_name(self):
+        return self.subscription.plan.name
