@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'accounts',
     'Admin',
     'usage',
-    'buyer'
+    'buyer',
+    'payments'
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_URL = '/accounts/login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STRIPE_API_KEY = 'sk_test_51LPOQWFLd152KwUeRBDuluOleWkyti9ogwboYZ473Mg3zvS9UDajI3ltgkiZUjoSR1lCp0B0Afs1XJvJXEPF3bap00pI5mTCf9'

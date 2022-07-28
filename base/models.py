@@ -46,6 +46,7 @@ class BuyerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_profile')
     billing_day = models.DateField(auto_now_add=True)  # change here
     stripe_token = models.CharField(max_length=500, null=True, blank=True)
+    stripe_id = models.CharField(max_length=50, null=True, blank=True)
     subscriptions = models.ManyToManyField('Subscription', related_name='buyer', blank=True)
     transactions = models.ManyToManyField('Transaction', related_name='buyer', blank=True)
 
@@ -62,8 +63,14 @@ class BuyerProfile(models.Model):
 
 
 class Transaction(models.Model):
-    subscription = models.ForeignKey('Subscription', on_delete=models.SET_NULL, related_name='transaction', null=True,
-                                     blank=False)
+    brand = models.CharField(max_length=25, blank=True, null=True)
+    last4 = models.CharField(max_length=4, blank=True, null=True)
+    transaction_id = models.CharField(max_length=50, blank=True, null=True)
+    amount_captured = models.PositiveIntegerField(default=0)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Payment of {self.amount_captured}$ by {self.buyer.first().user.get_full_name()}"
 
 
 class Subscription(models.Model):
