@@ -36,7 +36,7 @@ def make_payment(user: User, customer, amount):
         customer=customer,
         amount=amount * 100,
         currency='usd',
-        description="Donation"
+        description="Subscriptions"
     )
     print(charge)
     profile = user.profile
