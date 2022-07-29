@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('user_type', models.CharField(choices=[('A', 'Admin'), ('B', 'buyer')], default=('A', 'Admin'), max_length=1)),
+                ('user_type', models.CharField(choices=[('A', 'admin_templates'), ('B', 'buyer')], default=('A', 'admin_templates'), max_length=1)),
                 ('email', models.EmailField(max_length=254, unique=True, verbose_name='email address')),
                 ('profile_img', models.ImageField(blank=True, null=True, upload_to='Images/Profile/')),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),

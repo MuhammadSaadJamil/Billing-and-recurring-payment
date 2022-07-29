@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'base',
     'accounts',
-    'Admin',
+    'base_admin',
     'usage',
     'buyer',
     'payments'

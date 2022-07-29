@@ -17,7 +17,7 @@ from usage.utils import get_user_by_pk
 @user_passes_test(is_admin, login_url='/unauthorized')
 def signup(request):
     """
-    Signup view for creating new user by Admin. After a user is created an email is sent on his email address for
+    Signup view for creating new user by admin_templates. After a user is created an email is sent on his email address for
     verification and account activation
     :param request: Http request
     :return: render template
@@ -48,7 +48,7 @@ def signup(request):
         'heading': 'Add User',
         'signup': 'active'
     }
-    return render(request, 'Admin/signup.html', context)
+    return render(request, 'admin_templates/signup.html', context)
 
 
 def activate(request, uidb64, token):
@@ -104,7 +104,7 @@ def update_profile(request, uidb64):
             'profile': 'active',
             'button_text': 'Update Profile'
         }
-        return render(request, 'Admin/add-form.html', data)
+        return render(request, 'admin_templates/add-form.html', data)
 
 
 class Login(LoginView):

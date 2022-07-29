@@ -6,7 +6,7 @@ from .managers import UserManager
 
 
 class User(AbstractUser):
-    user_type_choices = [('A', 'Admin'), ('B', 'buyer')]
+    user_type_choices = [('A', 'admin_templates'), ('B', 'buyer')]
     user_type = models.CharField(max_length=1, null=False, blank=False, default=user_type_choices[0],
                                  choices=user_type_choices)
     email = models.EmailField(_("email address"), blank=False, null=False, unique=True)
@@ -41,6 +41,27 @@ class User(AbstractUser):
     def is_complete(self):
         return self.first_name is not None
 
+    @property
+    def amount_due(self):
+        subscription_amount = 0
+        overuse_payment = 0
+        for subscription in self.subscriptions.all():
+            subscription_amount += subscription.plan.monthly_fee
+        for item in self.usage.all():
+            used_items = item.unit_used - item.feature.max_unit_limit
+            if used_items > 0:
+                overuse_payment += used_items * item.feature.unit_price
+        return {'total': overuse_payment + subscription_amount, 'subscription': subscription_amount,
+                'overuse': overuse_payment}
+
+    def reset_payment(self):
+        self.usage.all().update(unit_used=0)
+
+    def __str__(self):
+        if self.get_full_name():
+            return self.get_full_name()
+        return self.email
+
 
 class BuyerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_profile')
@@ -59,7 +80,9 @@ class BuyerProfile(models.Model):
 
     @property
     def payment_authorized(self):
-        return self.stripe_token is not None
+        if self.stripe_token:
+            return True
+        return False
 
 
 class Transaction(models.Model):

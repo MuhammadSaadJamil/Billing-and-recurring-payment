@@ -36,7 +36,7 @@ def get_feature_usage(request, pk):
 class UpdateUsage(LoginMixin, IsAdminMixin, UpdateView):
     model = Usage
     fields = ['unit_used']
-    template_name = 'Admin/add-form.html'
+    template_name = 'admin_templates/add-form.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,5 +1,6 @@
 import stripe
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from base.models import User, Transaction
 from payments.utils import setup_stripe
@@ -23,28 +24,5 @@ def authorize_payment(request):
                     profile.stripe_token = request.POST.get('stripeToken')
                     profile.stripe_id = customer.id
                     profile.save()
-
-                    make_payment(user, customer, 5)
-                else:
-                    customer = stripe.Customer.retrieve(user.profile.stripe_id)
-                    make_payment(user, customer, 10)
+                return redirect(reverse('profile'))
     return render(request, 'payment/authorize.html')
-
-
-def make_payment(user: User, customer, amount):
-    charge = stripe.Charge.create(
-        customer=customer,
-        amount=amount * 100,
-        currency='usd',
-        description="Subscriptions"
-    )
-    print(charge)
-    profile = user.profile
-    transaction = Transaction.objects.create(
-        brand=charge.payment_method_details.card.brand,
-        last4=charge.payment_method_details.card.last4,
-        transaction_id=charge.id,
-        amount_captured=charge.amount_captured
-    )
-    profile.transactions.add(transaction)
-    profile.save()

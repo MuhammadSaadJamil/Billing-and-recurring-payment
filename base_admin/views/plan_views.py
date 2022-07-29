@@ -5,7 +5,7 @@ from base.models import *
 
 
 class CreatePlan(CreateView):
-    template_name = 'Admin/add-form.html'
+    template_name = 'admin_templates/add-form.html'
     model = Plan
     fields = '__all__'
     success_url = reverse_lazy('list-plan')
@@ -20,7 +20,7 @@ class CreatePlan(CreateView):
 
 
 class ListPlan(ListView):
-    template_name = 'Admin/list-plans.html'
+    template_name = 'admin_templates/list-plans.html'
     model = Plan
     context_object_name = 'plans'
 
@@ -35,7 +35,7 @@ class ListPlan(ListView):
 
 
 class DetailPlan(DetailView):
-    template_name = 'Admin/plan.html'
+    template_name = 'admin_templates/plan.html'
     model = Plan
     context_object_name = 'plan'
 
@@ -50,7 +50,7 @@ class DetailPlan(DetailView):
 
 
 class UpdatePlan(UpdateView):
-    template_name = 'Admin/add-form.html'
+    template_name = 'admin_templates/add-form.html'
     model = Plan
     fields = '__all__'
     success_url = reverse_lazy('list-plan')
@@ -65,7 +65,7 @@ class UpdatePlan(UpdateView):
 
 
 class DeletePlan(DeleteView):
-    template_name = 'Admin/delete.html'
+    template_name = 'admin_templates/delete.html'
     model = Plan
     success_url = reverse_lazy('list-plan')
 

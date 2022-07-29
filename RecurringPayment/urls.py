@@ -24,7 +24,7 @@ urlpatterns = [
     path('user/profile', get_profile, name='profile'),
     path('unauthorized/', unauthorized, name='err-401'),
     path('accounts/', include("accounts.urls")),
-    path('admin/', include("Admin.urls")),
+    path('admin/', include("base_admin.urls")),
     path('user/', include("buyer.urls")),
     path('usage/', include("usage.urls")),
     path('payment/', include("payments.urls")),

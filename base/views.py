@@ -16,7 +16,7 @@ def index(request):
     if request.user.is_authenticated:
         user = get_user_by_pk(request.user.id)
         if user.is_admin:
-            return render(request, 'Admin/home.html', {'home': 'active'})
+            return render(request, 'admin_templates/home.html', {'home': 'active'})
         context = {
             'home': 'active',
             'plans': Plan.objects.all(),

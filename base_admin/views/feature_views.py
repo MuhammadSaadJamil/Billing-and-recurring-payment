@@ -4,7 +4,7 @@ from base.models import *
 
 
 class CreateFeature(CreateView):
-    template_name = 'Admin/add-form.html'
+    template_name = 'admin_templates/add-form.html'
     model = Feature
     fields = '__all__'
     success_url = reverse_lazy('list-feature')
@@ -19,7 +19,7 @@ class CreateFeature(CreateView):
 
 
 class ListFeature(ListView):
-    template_name = 'Admin/list-features.html'
+    template_name = 'admin_templates/list-features.html'
     model = Feature
     context_object_name = 'features'
 
@@ -34,7 +34,7 @@ class ListFeature(ListView):
 
 
 class DetailFeature(DetailView):
-    template_name = 'Admin/feature.html'
+    template_name = 'admin_templates/feature.html'
     model = Feature
     context_object_name = 'feature'
 
@@ -49,7 +49,7 @@ class DetailFeature(DetailView):
 
 
 class UpdateFeature(UpdateView):
-    template_name = 'Admin/add-form.html'
+    template_name = 'admin_templates/add-form.html'
     model = Feature
     fields = '__all__'
     success_url = reverse_lazy('list-feature')
@@ -64,7 +64,7 @@ class UpdateFeature(UpdateView):
 
 
 class DeleteFeature(DeleteView):
-    template_name = 'Admin/delete.html'
+    template_name = 'admin_templates/delete.html'
     model = Feature
     success_url = reverse_lazy('list-feature')
 

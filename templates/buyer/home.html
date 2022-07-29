@@ -1,6 +1,15 @@
 {% extends 'base/main.html' %}
 {% load util_tags %}
 {% block content %}
+    {% if not request.user.profile.payment_authorized %}
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    Authorize payment in profile to subscribe to plans
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <div class="row">
         {% for plan in plans %}
             <div class="col-md-4 col-sm-12">
@@ -29,7 +38,7 @@
                     <div class="info-box-footer">
                         <div class="center-items pb-4">
                             {% with subscribed=plan|subscribed:request.user %}
-                                {% if not subscribed %}
+                                {% if not subscribed and request.user.profile.payment_authorized %}
                                     <a href="{% url 'subscribe' plan.id %}" class="btn btn-primary">Subscribe</a>
                                 {% else %}
                                     <button disabled class="btn btn-secondary">Subscribe</button>
