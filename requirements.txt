@@ -10,6 +10,7 @@ click-plugins==1.1.1
 click-repl==0.2.0
 cloudinary==1.29.0
 Deprecated==1.2.13
+dj-config-url==0.1.1
 dj3-cloudinary-storage==0.0.6
 Django==3.2.14
 django-background-tasks==1.2.5
@@ -35,4 +36,5 @@ tzlocal==4.2
 urllib3==1.26.10
 vine==5.0.0
 wcwidth==0.2.5
+whitenoise==6.2.0
 wrapt==1.14.1
