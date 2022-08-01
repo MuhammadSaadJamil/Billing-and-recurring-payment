@@ -1,3 +1,4 @@
+from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
@@ -31,7 +32,7 @@ def subscribe(request, pk):
     profile.subscriptions.add(subscription)
     profile.save()
 
-    make_payment(request, user, subscription.plan.monthly_fee)
+    make_payment(get_current_site(request).domain, user.id, subscription.plan.monthly_fee, schedule=5)
     return redirect(reverse('home'))
 
 

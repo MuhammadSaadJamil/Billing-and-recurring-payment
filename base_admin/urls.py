@@ -17,5 +17,6 @@ urlpatterns = [
     path('features/update/<int:pk>', UpdateFeature.as_view(), name='update-feature'),
     path('features/delete/<int:pk>', DeleteFeature.as_view(), name='delete-feature'),
     # User Views
-    path('buyers', ListBuyers.as_view(), name='list-buyers')
+    path('buyers', ListBuyers.as_view(), name='list-buyers'),
+    path('buyers/update/payments/<int:pk>', toggle_charge_buyer, name='toggle-buyers-payment')
 ]

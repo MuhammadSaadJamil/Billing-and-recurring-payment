@@ -6,7 +6,7 @@ from .managers import UserManager
 
 
 class User(AbstractUser):
-    user_type_choices = [('A', 'admin_templates'), ('B', 'buyer')]
+    user_type_choices = [('A', 'Admin'), ('B', 'buyer')]
     user_type = models.CharField(max_length=1, null=False, blank=False, default=user_type_choices[0],
                                  choices=user_type_choices)
     email = models.EmailField(_("email address"), blank=False, null=False, unique=True)
@@ -70,6 +70,7 @@ class BuyerProfile(models.Model):
     stripe_id = models.CharField(max_length=50, null=True, blank=True)
     subscriptions = models.ManyToManyField('Subscription', related_name='buyer', blank=True)
     transactions = models.ManyToManyField('Transaction', related_name='buyer', blank=True)
+    charge_on_billing_day = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.get_full_name() if self.user.get_full_name() else self.user.email}'s profile"

@@ -4,7 +4,7 @@ from base.models import User, BuyerProfile
 
 
 class SignupForm(UserCreationForm):
-    user_choices = [('Buyer', "Buyer"), ('admin_templates', 'admin_templates')]
+    user_choices = [('Buyer', "Buyer"), ('Admin', 'Admin')]
     email = forms.EmailField(max_length=200, help_text='Required')
     type = forms.ChoiceField(choices=user_choices, initial=user_choices[0][0])
 
@@ -13,7 +13,7 @@ class SignupForm(UserCreationForm):
         fields = ('email', 'password1', 'password2')
 
     def save(self, admin=False, commit=True, update=False):
-        if self.cleaned_data.get('type') == 'admin_templates' or admin:
+        if self.cleaned_data.get('type') == 'Admin' or admin:
             is_admin = True
         else:
             is_admin = False

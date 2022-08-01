@@ -25,4 +25,8 @@ def authorize_payment(request):
                     profile.stripe_id = customer.id
                     profile.save()
                 return redirect(reverse('profile'))
-    return render(request, 'payment/authorize.html')
+    context = {
+        'title': 'authorize payment',
+        'heading': 'Authorize Payments'
+    }
+    return render(request, 'payment/authorize.html', context)
