@@ -1,0 +1,1 @@
+web: gunicorn RecurringPayment.wsgi --log-file -
