@@ -1,0 +1,26 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <div class="info-box mt-2">
+        <div class="info-header">
+            <h3>{{ plan.name }}</h3>
+        </div>
+        <div class="info-body">
+            <table class="table table-borderless">
+                <tr>
+                    <th>Monthly Fee</th>
+                    <td>{{ plan.monthly_fee }}</td>
+                </tr>
+                <tr>
+                    <th>Features</th>
+                    <td>
+                        <ul>
+                            {% for item in plan.features.all %}
+                                <li><a href="{% url 'get-feature' item.id %}">{{ item.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}

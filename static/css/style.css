@@ -1,0 +1,90 @@
+body {
+    background-color: #fbfbfb;
+}
+
+@media (min-width: 991.98px) {
+    .main {
+        padding-left: 240px;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 75px 0 0;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+}
+
+.navbar-brand .logo {
+    height: 4rem;
+    width: auto;
+}
+
+.form-container {
+    width: 80%;
+}
+
+.center-items {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+table .table-link:hover {
+    text-decoration: none;
+}
+
+.confirm-box {
+    margin: 5rem;
+    border: 1px solid dodgerblue;
+    padding: 3rem;
+    border-radius: 2rem;
+    background: white;
+}
+
+.info-box {
+    background: white;
+    border: 1px solid dodgerblue;
+    border-radius: 2rem;
+    width: 50%;
+}
+
+.info-box-col {
+    background: white;
+    border: 1px solid dodgerblue;
+    border-radius: 2rem;
+    /*width: 100%;*/
+}
+
+.info-header {
+    border-radius: 1.9rem 1.9rem 0 0;
+    background: #4485c7;
+    padding: 1rem;
+    color: white;
+
+}
+
+.profile-img {
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.info-box-footer {
+
+}
+
+.icon-img {
+    height: 20px;
+    width: auto;
+}
+
+table {
+    overflow-x: scroll;
+}

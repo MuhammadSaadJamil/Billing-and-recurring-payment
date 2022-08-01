@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://js.stripe.com/v3/"></script>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+{% include 'base/nav.html' %}
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-6"><h1>{{ heading }}</h1></div>
+            <div class="col-6">
+                <div class="text-right pr-2">
+                    {% if button %} <a href="{{ link }}" class="btn btn-primary">{{ button }}</a> {% endif %}
+                </div>
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+{% block script %}
+{% endblock %}
+</body>
+</html>

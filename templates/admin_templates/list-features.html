@@ -1,0 +1,24 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <table class="table table-hover">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Unit Price</th>
+            <th>Unit Limit</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for feature in features %}
+            <tr>
+                <td>{{ feature.code }}</td>
+                <td><a href="{% url 'get-feature' feature.id %}" class="table-link">{{ feature.name }}</a></td>
+                <td>{{ feature.unit_price }}</td>
+                <td>{{ feature.max_unit_limit }}</td>
+                <td><a href="{% url 'update-feature' feature.id %}" class="btn btn-secondary">Edit</a></td>
+                <td><a href="{% url 'delete-feature' feature.id %}" class="btn btn-danger">Delete</a></td>
+            </tr>
+
+        {% endfor %}
+    </table>
+{% endblock %}

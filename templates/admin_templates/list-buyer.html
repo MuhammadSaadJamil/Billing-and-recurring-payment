@@ -1,0 +1,27 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% load util_tags %}
+{% block content %}
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Active</th>
+        </tr>
+        {% for buyer in buyers %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'list-usage' buyer.id %}" class="table-link">{{ buyer.email }}</a></td>
+                <td>{{ buyer.get_full_name | value_or_na }}</td>
+                {% if buyer.is_active %}
+                    <td><img src="{% static 'images/active.png' %}" alt="Active" class="icon-img"></td>
+                {% else %}
+                    <td><img src="{% static 'images/inactive.png' %}" alt="Not Active" class="icon-img"></td>
+                {% endif %}
+
+            </tr>
+
+        {% endfor %}
+    </table>
+{% endblock %}
