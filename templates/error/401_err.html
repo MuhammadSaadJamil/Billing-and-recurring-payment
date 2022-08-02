@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>UnAuthorized</title>
-</head>
-<body>
-    <h1>User not authorized to complete this action.</h1>
-</body>
-</html>
+{% extends 'base/main.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger">
+                <h1>User not authorized to complete this action.</h1>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

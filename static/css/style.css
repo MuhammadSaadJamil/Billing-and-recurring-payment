@@ -2,10 +2,8 @@ body {
     background-color: #fbfbfb;
 }
 
-@media (min-width: 991.98px) {
-    .main {
-        padding-left: 240px;
-    }
+.main {
+    padding-left: 240px;
 }
 
 /* Sidebar */
@@ -86,5 +84,27 @@ table .table-link:hover {
 }
 
 table {
-    overflow-x: scroll;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+table tbody {
+    display: table;
+    width: 100%;
+}
+
+@media only screen and (max-width: 991.98px) {
+
+    .main {
+        padding-left: 0;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .info-box {
+        width: 100%;
+    }
 }

@@ -74,8 +74,75 @@
             <a class="navbar-brand" href="{% url 'home' %}">
                 <img class="logo" src="{% static 'images/logo/logo-2.png' %}" alt="Logo"/>
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-lg-none">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}"
+                           class="list-group-item list-group-item-action py-2 {{ home }}"
+                           aria-current="true">
+                            <span>Home</span>
+                        </a>
+                    </li>
 
+                    {% if request.user.is_superuser %}
+                        <li class="nav-item">
+                            <a href="{% url 'signup' %}"
+                               class="list-group-item list-group-item-action py-2 {{ signup }}"
+                               aria-current="true">
+                                <span>Add User</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'list-plan' %}"
+                               class="list-group-item list-group-item-action py-2 {{ plans_active }}"
+                               aria-current="true">
+                                <span>Plans</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'list-feature' %}"
+                               class="list-group-item list-group-item-action py-2 {{ features_active }}"
+                               aria-current="true">
+                                <span>Features</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'list-buyers' %}"
+                               class="list-group-item list-group-item-action py-2 {{ usage_active }}"
+                               aria-current="true">
+                                <span>Usage</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'list-usage' request.user.id %}"
+                               class="list-group-item list-group-item-action py-2 {{ usage_active }}"
+                               aria-current="true">
+                                <span>Usage</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a href="{% url 'profile' %}"
+                           class="list-group-item list-group-item-action py-2 {{ profile }}"
+                           aria-current="true">
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}"
+                           class="list-group-item list-group-item-action py-2"
+                           aria-current="true">
+                            <span>Logout</span>
+                        </a>
+                    </li>
 
+                </ul>
+            </div>
         </div>
     </nav>
 

@@ -1,1 +1,10 @@
-<h1>Account is not active. Please check your email address for account activation.</h1>
+{% extends 'base/messages.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger">
+                <h1>Account is not active. Please check your email address for account activation.</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}

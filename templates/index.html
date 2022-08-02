@@ -1,10 +1,134 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Business Frontpage - Start Bootstrap Template</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="{% static 'css/styles_landing.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<h1>Home</h1>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" href="#"><img class="logo" src="{% static 'images/logo/logo-4.png' %}" alt="Logo"/>Recurring Payments</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="btn btn-primary px-4 me-sm-3" href="{% url 'login' %}">Log in</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Recurring Payments and Subscriptions</h1>
+                    <p class="lead text-white-50 mb-4">Lorem Ipsum dolor sit amet, consecteur adipiscing !</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'login' %}">Log in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Features section-->
+<section class="py-5 border-bottom" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i>
+                </div>
+                <h2 class="h4 fw-bolder">Fully Responsive</h2>
+                <p>Support Multiple platforms from mobile to desktop</p>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i>
+                </div>
+                <h2 class="h4 fw-bolder">Django Based</h2>
+                <p>The application uses Django with bootstrap as its stack</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i>
+                </div>
+                <h2 class="h4 fw-bolder">Easy to Use</h2>
+                <p>Easy and intuitive navigation</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonials section-->
+<section class="bg-light py-5 border-bottom">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">Customer testimonials</h2>
+            <p class="lead mb-0">Our customers love working with us</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <!-- Testimonial 1-->
+                <div class="card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-1">Thank you for putting together such a great product. We loved working
+                                    with you and the whole team, and we will be recommending you to others!</p>
+                                <div class="small text-muted">- John Doe, USA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2-->
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-1">The whole team was a huge help with putting things together for our
+                                    company and brand. We will be hiring them again in the near future for additional
+                                    work!</p>
+                                <div class="small text-muted">- John Doe, USA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact section-->
+<section class="py-5">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+            <h2 class="fw-bolder">Get Started Today</h2>
+            <p class="lead mb-0"><a href="{% url 'login' %}" class="btn btn-primary btn-block">Log in</a></p>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Recurring Payments 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
