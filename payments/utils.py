@@ -17,7 +17,7 @@ def setup_stripe():
 
 
 @background(schedule=60)
-def make_payment(domain, user_id, amount=None, customer=None, schedule_payment=False):
+def make_payment(domain, user_id, amount=None, customer=None, schedule_payment=False, make_sync=False):
     user = User.objects.get(id=user_id)
     if not customer:
         customer = stripe.Customer.retrieve(user.profile.stripe_id)
@@ -42,7 +42,10 @@ def make_payment(domain, user_id, amount=None, customer=None, schedule_payment=F
     profile.save()
     user_name = str(user)
     email = user.email
-    send_payment_email_invoice(domain, user_name, email, amount, schedule=5)
+    if make_sync:
+        send_payment_email_invoice.now(domain, user_name, email, amount)
+    else:
+        send_payment_email_invoice(domain, user_name, email, amount, schedule=5)
     if schedule_payment:
         make_payment(domain, user_id, schedule_payment=True,
                      schedule=int(get_next_schedule_time(datetime.datetime.now())))

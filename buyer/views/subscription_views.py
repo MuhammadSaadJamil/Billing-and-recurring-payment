@@ -32,7 +32,8 @@ def subscribe(request, pk):
     profile.subscriptions.add(subscription)
     profile.save()
 
-    make_payment(get_current_site(request).domain, user.id, subscription.plan.monthly_fee, schedule=5)
+    # make_payment(get_current_site(request).domain, user.id, subscription.plan.monthly_fee, schedule=5)
+    make_payment.now(get_current_site(request).domain, user.id, subscription.plan.monthly_fee, make_sync=True)
     return redirect(reverse('home'))
 
 

@@ -41,6 +41,10 @@ def unauthorized(request):
     return render(request, 'error/401_err.html')
 
 
+def card_error(request):
+    return render(request, 'error/general_err.html', {'message': 'Payment Declined!'})
+
+
 @login_required()
 def get_profile(request):
     user = get_user_by_pk(request.user.id)

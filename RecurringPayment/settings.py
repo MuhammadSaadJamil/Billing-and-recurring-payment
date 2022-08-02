@@ -142,8 +142,6 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 LOGIN_URL = '/accounts/login'
 
 LOGIN_REDIRECT_URL = '/'
@@ -151,3 +149,11 @@ LOGIN_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STRIPE_API_KEY = 'sk_test_51LPOQWFLd152KwUeRBDuluOleWkyti9ogwboYZ473Mg3zvS9UDajI3ltgkiZUjoSR1lCp0B0Afs1XJvJXEPF3bap00pI5mTCf9'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'recurringpaymentsdjango@gmail.com'
+EMAIL_HOST_PASSWORD = 'zgfpiqisnbanxkrb'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
