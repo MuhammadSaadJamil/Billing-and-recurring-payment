@@ -23,6 +23,11 @@ body {
     width: auto;
 }
 
+.login-logo {
+    height: 8rem;
+    width: auto;
+}
+
 .form-container {
     width: 80%;
 }
@@ -92,6 +97,49 @@ table {
 table tbody {
     display: table;
     width: 100%;
+}
+.stat-container{
+    width: 90%;
+    border: 0 solid #5050f1;
+    padding: 2rem 0;
+    margin: 2rem auto 0 auto;
+    border-radius: 2rem;
+    color: white;
+    box-shadow: 2px 2px 15px rgba(200, 200, 200, 0.56), 5px 5px 15px rgba(200, 200, 200, 0.2);
+    transition: 0.25s ease-in-out;
+}
+
+.stat-container:hover{
+    transform: perspective(1000px) translateZ(25px);
+    cursor: pointer;
+}
+
+.stat-body h4{
+    font-size: 1.25rem;
+}
+
+.stat-heading h3{
+    font-size: 2rem;
+}
+
+.bg-1{
+    background: #5b5bef;
+}
+
+.bg-2{
+    background: #5b79ef;
+}
+
+.bg-3{
+    background: #5b9bef;
+}
+
+.bg-4{
+    background: #855bef;
+}
+
+.bg-5{
+    background: #965bef;
 }
 
 @media only screen and (max-width: 991.98px) {

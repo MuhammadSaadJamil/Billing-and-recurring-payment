@@ -1,4 +1,97 @@
 {% extends 'base/main.html' %}
 {% block content %}
-<p>Hello</p>
+    <div class="row">
+
+
+        <div class="col-md-6 col-sm-12">
+            <div class="stat-container bg-1">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="stat-heading">
+                            <div class="text-center">
+                                <h3>{{ transactions }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="text-center">
+                            <div class="stat-body">
+                                <h4 class="mt-2">Total Transactions</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-sm-12">
+            <div class="stat-container bg-2">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="stat-heading">
+                            <div class="text-center">
+                                <h3>{{ buyers }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="text-center">
+                            <div class="stat-body">
+                                <h4 class="mt-2">Total Buyers</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+            <div class="stat-container bg-3">
+                <div class="stat-heading">
+                    <div class="text-center">
+                        <h3>{{ features }}</h3>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-body">
+                        <h4>Total features</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+            <div class="stat-container bg-4">
+                <div class="stat-heading">
+                    <div class="text-center">
+                        <h3>{{ subscriptions }}</h3>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-body">
+                        <h4>Total Subscriptions</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-12">
+            <div class="stat-container bg-5">
+                <div class="stat-heading">
+                    <div class="text-center">
+                        <h3>{{ plans }}</h3>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="stat-body">
+                        <h4>Total Plans</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 {% endblock %}
