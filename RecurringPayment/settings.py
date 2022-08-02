@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t_ppf%8rqdpum@w+y*=22uqday)lbemw_42!apc^qh58ur!0xz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['recurring-payments-django.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
