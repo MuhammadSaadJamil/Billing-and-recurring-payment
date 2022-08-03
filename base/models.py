@@ -100,7 +100,9 @@ class Transaction(models.Model):
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"Payment of {self.amount_captured}$ by {self.buyer.first().user.get_full_name()}"
+        if self.buyer.first().user.get_full_name():
+            return f"Payment of {self.amount_captured}$ by {self.buyer.first().user.get_full_name()}"
+        return f"Payment of {self.amount_captured}$ by Anonymous"
 
 
 class Subscription(models.Model):
