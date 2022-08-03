@@ -13,6 +13,6 @@ def get_transactions(request, pk):
         'title': 'Transactions',
         'heading': 'Transactions',
         'transactions_active': 'active',
-        'usage_active': 'active'
+        'usage_admin_active': 'active'
     }
     return render(request, 'transactions/transaction.html', context)

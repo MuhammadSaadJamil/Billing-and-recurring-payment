@@ -89,12 +89,22 @@ def update_profile(request, uidb64):
         user = None
     if not user:
         return render(request, 'error/404_err.html', {'data': 'User'})
-
+    if user.id != request.user.id:
+        return render(request, 'error/general_err.html',
+                      {'message': 'Please login with relevant profile to complete this action'})
     if request.POST:
         form = AccountSetupForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
-            return redirect(reverse('home'))
+            return redirect(reverse('profile'))
+        data = {
+            'form': form,
+            'title': 'Update Profile',
+            'heading': 'Update Profile',
+            'profile': 'active',
+            'button_text': 'Update Profile'
+        }
+        return render(request, 'admin_templates/add-form.html', data)
     form = AccountSetupForm(instance=user)
     if user:
         data = {
