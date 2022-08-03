@@ -7,7 +7,7 @@ from .managers import UserManager
 
 class User(AbstractUser):
     user_type_choices = [('A', 'Admin'), ('B', 'buyer')]
-    user_type = models.CharField(max_length=1, null=False, blank=False, default=user_type_choices[0],
+    user_type = models.CharField(max_length=255, null=False, blank=False, default=user_type_choices[0],
                                  choices=user_type_choices)
     email = models.EmailField(_("email address"), blank=False, null=False, unique=True)
     username = None
@@ -53,6 +53,12 @@ class User(AbstractUser):
                 overuse_payment += used_items * item.feature.unit_price
         return {'total': overuse_payment + subscription_amount, 'subscription': subscription_amount,
                 'overuse': overuse_payment}
+
+    @property
+    def transactions(self):
+        if self.is_admin:
+            return None
+        return self.profile.transactions
 
     def reset_payment(self):
         self.usage.all().update(unit_used=0)
