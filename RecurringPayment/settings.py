@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'middlewares.permissions.PermissionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
