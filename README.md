@@ -55,12 +55,11 @@ of *base* app along with application wide functionality to
 increase maintainability.
 
 ## .env file format
-`
-SECRET_KEY=
-STRIPE_API_KEY=
-EMAIL_HOST_USER=
-EMAIL_HOST_PASSWORD=
-CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-`
+
+SECRET_KEY=  
+STRIPE_API_KEY=  
+EMAIL_HOST_USER=  
+EMAIL_HOST_PASSWORD=  
+CLOUD_NAME=  
+CLOUDINARY_API_KEY=  
+CLOUDINARY_API_SECRET=  
