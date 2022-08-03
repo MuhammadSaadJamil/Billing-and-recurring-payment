@@ -107,6 +107,15 @@ def update_profile(request, uidb64):
         return render(request, 'admin_templates/add-form.html', data)
 
 
+def admin_signup(request):
+    if request.POST:
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(reverse('login'))
+    return render(request, 'accounts/admin-register.html', {'form': SignupForm()})
+
+
 class Login(LoginView):
     """
     Login view
