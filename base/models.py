@@ -113,7 +113,7 @@ class Subscription(models.Model):
 
 
 class Plan(models.Model):
-    name = models.CharField(max_length=255, blank=False, null=False)
+    name = models.CharField(max_length=20, blank=False, null=False)
     monthly_fee = models.PositiveIntegerField(blank=False, null=False, default=0)
     features = models.ManyToManyField('Feature', related_name='plan')
 
@@ -122,7 +122,7 @@ class Plan(models.Model):
 
 
 class Feature(models.Model):
-    name = models.CharField(max_length=255, blank=False, null=False)
+    name = models.CharField(max_length=20, blank=False, null=False)
     code = models.CharField(max_length=50, blank=False, null=False)
     unit_price = models.PositiveIntegerField(blank=False, null=False, default=0)
     max_unit_limit = models.PositiveIntegerField(blank=False, null=False, default=0)
