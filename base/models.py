@@ -54,6 +54,12 @@ class User(AbstractUser):
         return {'total': overuse_payment + subscription_amount, 'subscription': subscription_amount,
                 'overuse': overuse_payment}
 
+    @property
+    def transactions(self):
+        if self.is_admin:
+            return None
+        return self.profile.transactions
+
     def reset_payment(self):
         self.usage.all().update(unit_used=0)
 

@@ -10,6 +10,7 @@
             <th>Active</th>
             <th>Charge on<br>Billing Day</th>
             <th>Update Charge<br>Status</th>
+            <th>Transactions</th>
         </tr>
         {% for buyer in buyers %}
             <tr>
@@ -28,10 +29,14 @@
                     <td><img src="{% static 'images/inactive.png' %}" alt="Not Active" class="icon-img"></td>
                 {% endif %}
                 {% if buyer.profile.charge_on_billing_day %}
-                    <td><button class="btn btn-success" disabled>Charging</button></td>
+                    <td>
+                        <button class="btn btn-success" disabled>Charging</button>
+                    </td>
                 {% else %}
                     <td><a href="{% url 'toggle-buyers-payment' buyer.id %}" class="btn btn-primary">Charge</a></td>
                 {% endif %}
+                <td><a href="{% url 'list-transactions' buyer.id %}" class="btn">view transactions</a></td>
+
             </tr>
 
         {% endfor %}

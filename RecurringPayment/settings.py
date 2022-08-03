@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'base_admin',
     'usage',
     'buyer',
-    'payments'
+    'payments',
+    'transactions'
 ]
 
 MIDDLEWARE = [
