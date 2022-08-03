@@ -16,13 +16,15 @@ def index(request):
     if request.user.is_authenticated:
         user = get_user_by_pk(request.user.id)
         if user.is_admin:
+            transactions = Transaction.objects.all()
             context = {
                 'home': 'active',
                 'plans': Plan.objects.all().count(),
                 'features': Feature.objects.all().count(),
                 'subscriptions': Subscription.objects.all().count(),
                 'buyers': User.objects.get_buyers().count(),
-                'transactions': Transaction.objects.all().count(),
+                'transactions': transactions.count(),
+                'data': [[str(transaction.created_at), transaction.amount_captured] for transaction in transactions],
                 'title': 'home',
                 'heading': 'Stats'
             }
