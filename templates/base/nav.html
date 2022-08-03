@@ -132,6 +132,11 @@
                                 <span>Usage</span>
                             </a>
                         </li>
+                        <a href="{% url 'list-transactions' request.user.id %}"
+                           class="list-group-item list-group-item-action py-2 {{ transactions_active }}"
+                           aria-current="true">
+                            <span>Transactions</span>
+                        </a>
                     {% endif %}
                     <li class="nav-item">
                         <a href="{% url 'profile' %}"
