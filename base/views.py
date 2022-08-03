@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from accounts.utils import to_base64
-from base.models import Plan
+from base.models import *
 from usage.utils import get_user_by_pk
 
 
@@ -16,7 +16,19 @@ def index(request):
     if request.user.is_authenticated:
         user = get_user_by_pk(request.user.id)
         if user.is_admin:
-            return render(request, 'admin_templates/home.html', {'home': 'active'})
+            transactions = Transaction.objects.all()
+            context = {
+                'home': 'active',
+                'plans': Plan.objects.all().count(),
+                'features': Feature.objects.all().count(),
+                'subscriptions': Subscription.objects.all().count(),
+                'buyers': User.objects.get_buyers().count(),
+                'transactions': transactions.count(),
+                'data': [[str(transaction.created_at), transaction.amount_captured] for transaction in transactions],
+                'title': 'home',
+                'heading': 'Stats'
+            }
+            return render(request, 'admin_templates/home.html', context)
         context = {
             'home': 'active',
             'plans': Plan.objects.all(),
@@ -29,6 +41,10 @@ def index(request):
 
 def unauthorized(request):
     return render(request, 'error/401_err.html')
+
+
+def card_error(request):
+    return render(request, 'error/general_err.html', {'message': 'Payment Declined!'})
 
 
 @login_required()

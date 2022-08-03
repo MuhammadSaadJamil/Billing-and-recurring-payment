@@ -15,14 +15,21 @@ def authorize_payment(request):
             user = get_user_by_pk(request.user.id)
             if user.is_buyer:
                 if not user.profile.payment_authorized:
-                    customer = stripe.Customer.create(
-                        email=user.email,
-                        name=user.get_full_name(),
-                        source=request.POST['stripeToken']
-                    )
-                    profile = user.profile
-                    profile.stripe_token = request.POST.get('stripeToken')
-                    profile.stripe_id = customer.id
-                    profile.save()
+                    try:
+                        customer = stripe.Customer.create(
+                            email=user.email,
+                            name=user.get_full_name(),
+                            source=request.POST['stripeToken']
+                        )
+                        profile = user.profile
+                        profile.stripe_token = request.POST.get('stripeToken')
+                        profile.stripe_id = customer.id
+                        profile.save()
+                    except stripe.error.CardError:
+                        return render(request, 'error/general_err.html', {'message': 'Card Declined.'})
                 return redirect(reverse('profile'))
-    return render(request, 'payment/authorize.html')
+    context = {
+        'title': 'authorize payment',
+        'heading': 'Authorize Payments'
+    }
+    return render(request, 'payment/authorize.html', context)
