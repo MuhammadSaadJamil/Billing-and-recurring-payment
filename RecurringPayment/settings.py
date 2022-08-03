@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,8 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
+# initialize environment
+env = environ.Env()
+environ.Env.read_env()
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t_ppf%8rqdpum@w+y*=22uqday)lbemw_42!apc^qh58ur!0xz'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -141,9 +148,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'base.User'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'devsinc2390',
-    'API_KEY': '398575115162694',
-    'API_SECRET': 'RXHsX5PkvaRv089bzUN4NOIjGGY',
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('CLOUDINARY_API_KEY'),
+    'API_SECRET': env('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -154,12 +161,14 @@ LOGIN_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-STRIPE_API_KEY = 'sk_test_51LPOQWFLd152KwUeRBDuluOleWkyti9ogwboYZ473Mg3zvS9UDajI3ltgkiZUjoSR1lCp0B0Afs1XJvJXEPF3bap00pI5mTCf9'
+# Stripe Configuration
+STRIPE_API_KEY = env('STRIPE_API_KEY')
 
+# Email configuration
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'recurringpaymentsdjango@gmail.com'
-EMAIL_HOST_PASSWORD = 'zgfpiqisnbanxkrb'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
