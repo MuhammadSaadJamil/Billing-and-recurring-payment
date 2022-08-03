@@ -7,7 +7,7 @@ from .managers import UserManager
 
 class User(AbstractUser):
     user_type_choices = [('A', 'Admin'), ('B', 'buyer')]
-    user_type = models.CharField(max_length=1, null=False, blank=False, default=user_type_choices[0],
+    user_type = models.CharField(max_length=255, null=False, blank=False, default=user_type_choices[0],
                                  choices=user_type_choices)
     email = models.EmailField(_("email address"), blank=False, null=False, unique=True)
     username = None
