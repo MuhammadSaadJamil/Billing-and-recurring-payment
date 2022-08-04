@@ -118,6 +118,11 @@ def update_profile(request, uidb64):
 
 
 def admin_signup(request):
+    """
+    Sign up view for admin
+    :param request:
+    :return:
+    """
     if request.POST:
         form = SignupForm(request.POST)
         if form.is_valid():

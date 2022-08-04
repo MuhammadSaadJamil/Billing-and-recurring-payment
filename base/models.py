@@ -1,3 +1,6 @@
+from decimal import Decimal
+
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext as _
@@ -114,7 +117,8 @@ class Subscription(models.Model):
 
 class Plan(models.Model):
     name = models.CharField(max_length=20, blank=False, null=False)
-    monthly_fee = models.PositiveIntegerField(blank=False, null=False, default=0)
+    monthly_fee = models.DecimalField(blank=False, null=False, default=0, decimal_places=2, max_digits=12,
+                                      validators=[MinValueValidator(Decimal('0.01'))])
     features = models.ManyToManyField('Feature', related_name='plan')
 
     def __str__(self):
@@ -124,7 +128,8 @@ class Plan(models.Model):
 class Feature(models.Model):
     name = models.CharField(max_length=20, blank=False, null=False)
     code = models.CharField(max_length=50, blank=False, null=False)
-    unit_price = models.PositiveIntegerField(blank=False, null=False, default=0)
+    unit_price = models.DecimalField(blank=False, null=False, default=0, decimal_places=2, max_digits=12,
+                                     validators=[MinValueValidator(Decimal('0.01'))])
     max_unit_limit = models.PositiveIntegerField(blank=False, null=False, default=0)
 
     def __str__(self):

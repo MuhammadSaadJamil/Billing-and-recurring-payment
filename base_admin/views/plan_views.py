@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from base.models import *
+from usage.utils import get_object_by_id
 
 
 class CreatePlan(CreateView):
@@ -47,6 +48,11 @@ class DetailPlan(DetailView):
         context['button'] = 'Edit'
         context['link'] = reverse('update-plan', args=[self.object.id])
         return context
+
+    def get(self, request, *args, **kwargs):
+        if not get_object_by_id(self.model, kwargs['pk']):
+            return render(request, 'error/404_err.html', {'data': 'Plan'})
+        return super().get(request, *args, **kwargs)
 
 
 class UpdatePlan(UpdateView):
