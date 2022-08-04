@@ -51,7 +51,7 @@ class DetailFeature(DetailView):
 
     def get(self, request, *args, **kwargs):
         if not get_object_by_id(self.model, kwargs['pk']):
-            return render(request, 'error/404_err.html', {'data': 'Plan'})
+            return render(request, 'error/404_err.html', {'data': 'Feature'})
         return super().get(request, *args, **kwargs)
 
 
