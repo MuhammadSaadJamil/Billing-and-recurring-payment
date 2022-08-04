@@ -104,8 +104,8 @@ class Transaction(models.Model):
 
     def __str__(self):
         if self.buyer.first():
-            return f"Payment of {self.amount_captured}$ by {self.buyer.first().user.get_full_name()}"
-        return f"Payment of {self.amount_captured}$ by Anonymous"
+            return f"Payment of {self.amount_captured/100}$ by {self.buyer.first().user.get_full_name()}"
+        return f"Payment of {self.amount_captured/100}$ by Anonymous"
 
 
 class Subscription(models.Model):
