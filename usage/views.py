@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, UpdateView
 
@@ -21,6 +21,8 @@ def get_subscriptions(request, pk):
 
 
 def get_feature_usage(request, pk):
+    if not request.user.is_superuser and request.user.id != pk:
+        return redirect(reverse('list-usage', args=[request.user.id]))
     user = get_user_by_pk(pk)
     if not user or user.is_admin:
         return render(request, 'error/404_err.html', {'data': 'Buyer'})

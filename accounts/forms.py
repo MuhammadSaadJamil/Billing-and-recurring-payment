@@ -66,10 +66,6 @@ class AccountSetupForm(forms.ModelForm):
             )
         return password2
 
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'profile_img', 'password1', 'password2']
-
     def save(self, admin=False, commit=True, update=True):
         if self.cleaned_data.get('first_name'):
             self.instance.first_name = self.cleaned_data.get('first_name')
@@ -81,3 +77,7 @@ class AccountSetupForm(forms.ModelForm):
             self.instance.set_password(self.cleaned_data.get('password2'))
         self.instance.save()
         return self.instance
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'profile_img', 'password1', 'password2']

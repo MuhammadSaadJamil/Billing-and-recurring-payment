@@ -15,4 +15,9 @@ class IsAdminMixin(UserPassesTestMixin):
 
 
 def is_admin(user):
+    """
+    Function based mixin for checking user type
+    :param user:
+    :return:
+    """
     return user and user.is_admin

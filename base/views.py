@@ -40,6 +40,11 @@ def index(request):
 
 
 def unauthorized(request):
+    """
+    401 Error view
+    :param request:
+    :return:
+    """
     return render(request, 'error/401_err.html')
 
 

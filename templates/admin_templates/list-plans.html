@@ -12,7 +12,7 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td><a href="{% url 'get-plan' plan.id %}" class="table-link">{{ plan.name }}</a></td>
-                <td>{{ plan.monthly_fee }}</td>
+                <td>{{ plan.monthly_fee }}$</td>
                 <td><a href="{% url 'update-plan' plan.id %}" class="btn btn-secondary">Edit</a></td>
                 <td><a href="{% url 'delete-plan' plan.id %}" class="btn btn-danger">Delete</a></td>
             </tr>
