@@ -127,7 +127,7 @@ class Plan(models.Model):
 
 class Feature(models.Model):
     name = models.CharField(max_length=20, blank=False, null=False)
-    code = models.CharField(max_length=50, blank=False, null=False)
+    code = models.CharField(max_length=10, blank=False, null=False)
     unit_price = models.DecimalField(blank=False, null=False, default=0, decimal_places=2, max_digits=12,
                                      validators=[MinValueValidator(Decimal('0.01'))])
     max_unit_limit = models.PositiveIntegerField(blank=False, null=False, default=0)
