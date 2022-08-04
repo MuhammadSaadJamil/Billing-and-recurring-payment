@@ -27,7 +27,7 @@ def make_payment(domain, user_id, amount=None, customer=None, schedule_payment=F
     print(f"Making payment of {amount}$ by {user}")
     charge = stripe.Charge.create(
         customer=customer,
-        amount=amount * 100,
+        amount=int(amount) * 100,
         currency='usd',
         description="Subscriptions"
     )
