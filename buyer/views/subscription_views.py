@@ -23,7 +23,7 @@ def subscribe(request, pk):
         return render(request, 'error/404_err.html', {'data': 'plan'})
     profile = user.profile
     for subscription in user.profile.subscriptions.all():
-        if subscription.plan.id == plan.id:
+        if subscription.plan and subscription.plan.id == plan.id:
             return render(request, 'error/general_err.html',
                           {'message': f'{user} Already Subscribed to the plan'})
     subscription = Subscription.objects.create(plan=plan)

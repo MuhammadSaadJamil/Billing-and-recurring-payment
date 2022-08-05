@@ -42,7 +42,7 @@ class User(AbstractUser):
 
     @property
     def is_complete(self):
-        return self.first_name is not None
+        return self.first_name is not None and self.first_name
 
     @property
     def amount_due(self):
