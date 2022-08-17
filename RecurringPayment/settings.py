@@ -28,7 +28,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['recurring-payments-django.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -44,18 +44,22 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'background_task',
+    'rest_framework',
+    "corsheaders",
     'base',
     'accounts',
     'base_admin',
     'usage',
     'buyer',
     'payments',
-    'transactions'
+    'transactions',
+    'api'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -172,3 +176,7 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
