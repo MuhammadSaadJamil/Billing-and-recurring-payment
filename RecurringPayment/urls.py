@@ -29,5 +29,6 @@ urlpatterns = [
     path('usage/', include("usage.urls")),
     path('payment/', include("payments.urls")),
     path('transactions/', include("transactions.urls")),
+    path('api/', include("api.urls")),
     path('payment/error', card_error, name='payment-error'),
 ]
